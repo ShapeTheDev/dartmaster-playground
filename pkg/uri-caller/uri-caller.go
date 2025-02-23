@@ -38,9 +38,9 @@ func (duc *dartcounterUriCaller) buildURL(path string) string {
 	return fmt.Sprintf("%s://%s:%s%s", duc.protocol, duc.host, duc.port, path)
 }
 
-// sse calls the sse uri and returns a channel to get eventStreams.
-// path: "/sse"
-func (duc *dartcounterUriCaller) SSE() (<-chan eventStream, error) {
+// DartcounterSSE calls the sse uri of the Dartcounter and returns a channel to get eventStreams.
+// path: "/dartcounter/sse"
+func (duc *dartcounterUriCaller) DartcounterSSE() (<-chan eventStream, error) {
 	// create a channel to stream sse events
 	eventStreamChan := make(chan eventStream, 10)
 
@@ -49,7 +49,7 @@ func (duc *dartcounterUriCaller) SSE() (<-chan eventStream, error) {
 		defer close(eventStreamChan) // close the channel when the goroutine ends
 
 		// create request
-		req, err := http.NewRequest("GET", duc.buildURL("/sse"), nil)
+		req, err := http.NewRequest("GET", duc.buildURL("/dartcounter/sse"), nil)
 		if err != nil {
 			errMsg := fmt.Errorf("SSE() - error: creating request: %v", err)
 			duc.logger.PrintlnErr(errMsg)

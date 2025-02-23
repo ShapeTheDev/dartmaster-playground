@@ -9,8 +9,8 @@ type CameraSubscriptionHandler[T any] struct {
 	subscriptions []chan T
 }
 
-// newCameraSubscriptionHandler returns a new camera-subscription-handler.
-func newCameraSubscriptionHandler[T any]() *CameraSubscriptionHandler[T] {
+// NewCameraSubscriptionHandler returns a new camera-subscription-handler.
+func NewCameraSubscriptionHandler[T any]() *CameraSubscriptionHandler[T] {
 	return &CameraSubscriptionHandler[T]{}
 }
 

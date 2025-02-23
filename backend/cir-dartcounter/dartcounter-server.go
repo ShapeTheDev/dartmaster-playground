@@ -14,7 +14,7 @@ func NewServer(logger *dartmasterlogger.DartmasterLogger, port string) *http.Ser
 	dartcounterGateway := gateway.NewDartcounterGateway(logger)
 
 	// initiate dartcounter uris
-	router.Path("/sse").HandlerFunc(dartcounterGateway.SSE()).Methods(http.MethodGet)
+	router.Path("/dartcounter/sse").HandlerFunc(dartcounterGateway.SSE()).Methods(http.MethodGet)
 
 	// initiate http server
 	httpServer := utils.NewHttpServer(router, port)
